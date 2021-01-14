@@ -1,7 +1,5 @@
 # tengeo_task_2b
 
-NodeJS server na RPi
+Malý formulář s políčkem email a telefon
 
-Stránka, která bude ukazovat datum a čas na RPi
-
-Použít moment.js a zformátovat cas a datum "hezky"
+Pošle POST request na https://hookbin.com
