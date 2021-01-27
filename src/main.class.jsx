@@ -3,22 +3,21 @@ import React, { useState } from 'react';
 
 import { Heading } from './heading.class';
 
-export const Main = () => {
+export const Main = (props) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [send, setSend] = useState('SEND THAT SHIT')
-  const axios = require('axios') 
-  
-   const onSubmit = (e) => {
+
+  const onSubmit = (e) => {
    e.preventDefault();
 
    setSend('Sending...')
 
-      const data = ({email,phone});
+    const data = { email, phone };
 
-      axios.post('https://hookb.in/QJNorLGLwQckpp2WOPWY',{data});
-
-    setTimeout(function(){ alert('Both your e-mail: ' + email + ' AND phone number: ' + phone +' just got logged in console and POSTed on Hookbin rn my dude <3'); },500);
+    axios.post('https://hookb.in/QJNorLGLwQckpp2WOPWY', { data }).then(() => {
+      alert('Both your e-mail: ' + email + ' AND phone number: ' + phone +' just got logged in console and POSTed on Hookbin rn my dude <3');
+    });
 
     console.log('mail in console: '+ email);  
     console.log('phone in console: '+ phone);
