@@ -1,24 +1,29 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-import { Heading } from './heading';
+import { Heading } from './heading.class';
 
 export const Main = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [send, setSend] = useState('SEND THAT SHIT')
   const axios = require('axios') 
   
    const onSubmit = (e) => {
    e.preventDefault();
 
+   setSend('Sending...')
+
       const data = ({email,phone});
 
       axios.post('https://hookb.in/QJNorLGLwQckpp2WOPWY',{data});
 
+    setTimeout(function(){ alert('Both your e-mail: ' + email + ' AND phone number: ' + phone +' just got logged in console and POSTed on Hookbin rn my dude <3'); },500);
+
     console.log('mail in console: '+ email);  
     console.log('phone in console: '+ phone);
 
-    alert('Both your e-mail: ' + email + ' AND phone number: ' + phone +' just got logged in console and POSTed on Hookbin rn my dude <3');
+    setSend('SEND THAT SHIT')
   }
 
   const onClear = () => {
@@ -36,7 +41,7 @@ export const Main = () => {
           phone:
           <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
         </label>
-        <input type="submit" value="SEND THAT SHIT" />
+        <input type="submit" value={send} />
       </form>
       <button onClick={onClear}>Clear values</button>
     </div>
